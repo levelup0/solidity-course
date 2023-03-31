@@ -50,13 +50,17 @@ contract DemoModfiers {
     }
 }
 
-contract DemoEvents {
+contract DemoEvent {
     address owner;
 
     event Paid(address _from, uint _amount, uint _timestamp);
 
     constructor() {
         owner = msg.sender;
+    }
+
+    receive() external payable {
+        pay();
     }
 
     function pay() public payable {
